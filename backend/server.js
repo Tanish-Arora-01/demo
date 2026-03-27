@@ -10,8 +10,12 @@ const verifyToken = require("./middleware/verifyToken");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware — CORS (allow all origins)
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 
 // MongoDB Connection
